@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class raiting {
 
     public static void main(String[] args) {
+
         Date date = new Date();
         //Собираем данные у пользователя
         Scanner sc = new Scanner(System.in);
@@ -22,10 +23,13 @@ public class raiting {
         int d = (int) c;
         System.out.println("Рейтинг: " + d);
 
+        Result result = new Result(name, a, b);
+        result.setRating(d);
+
         try {
             //Пишем данные в файл
             FileWriter writer = new FileWriter("rating.txt");
-            writer.write(name + " финишировал  на " + Math.round(a) + " месте." + "Всего участников: " + Math.round(b) + " " + ". Рейтинг посчитан " + date + " и составляет " + d + ".");
+            writer.write(String.valueOf(result));
             System.out.println("Данные сохранены в файле raiting.txt");
             writer.close();
 
